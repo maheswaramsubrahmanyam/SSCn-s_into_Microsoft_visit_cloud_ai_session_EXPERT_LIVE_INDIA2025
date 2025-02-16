@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSC at Microsoft Event</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    header {
+      background: #0047AB;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    .container {
+      padding: 1rem;
+    }
+    .event-description {
+      margin-bottom: 2rem;
+    }
+
+    .event-description h2 {
+      font-size: 1.5rem;
+      color: #0047AB;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .card h3 {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      color: #0047AB;
+    }
+
+    .card p {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #fff;
+      background: #0047AB;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .card a:hover {
+      background: #003580;
+    }
+
+    @media (min-width: 768px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      color: #0078d4;
+    }
+
+    .sessions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .session-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%;
+      max-width: 350px;
+      overflow: hidden;
+      text-align: center;
+      padding: 15px;
+    }
+
+    .session-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .session-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #0078d4;
+      margin-bottom: 10px;
+    }
+
+    .session-speaker {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .session-description {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      .session-card {
+        width: 100%;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+    .card {
+      grid-column: span 12;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background-color: #e9f5ff;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .card p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    @media (min-width: 768px) {
+      .card {
+        grid-column: span 6;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .card {
+        grid-column: span 4;
+      }
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Student Service Community at Microsoft</h1>
+  </header>
+
+  <div class="container">
+    <section class="event-description">
+      <h2>A Remarkable Day at Microsoft Office</h2>
+      <p>
+        Date: February 15, 2025<br>
+        Location: Microsoft Office, Gachibowli
+      </p>
+      <p>Yesterday was an unforgettable day as I had the incredible opportunity to attend a Microsoft Office event with the Student Service Community Network (SSCN)...</p>
+    </section>
+
+    <section class="mentors">
+      <h2>Our Mentors</h2>
+      <div class="cards">
+        <!-- Card 1 -->
+        <div class="card">
+          <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739721228/SSC_HYD_MICROSOFT/sathi_uwkpyu.jpg" alt="Mentor 1">
+          <h3>John Doe</h3>
+          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/johndoe">John Doe</a></p>
+          <p><strong>From:</strong> Hyderabad</p>
+          <p><strong>College:</strong> IIT Madras</p>
+          <p><strong>Feedback:</strong> "An amazing experience with SSCN!"</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <img src="mentor2.jpg" alt="Mentor 2">
+          <h3>Jane Smith</h3>
+          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/janesmith">Jane Smith</a></p>
+          <p><strong>From:</strong> Chennai</p>
+          <p><strong>College:</strong> Anantapur University</p>
+          <p><strong>Feedback:</strong> "SSC is doing great work for students."</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+          <img src="mentor3.jpg" alt="Mentor 3">
+          <h3>Robert Brown</h3>
+          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/robertbrown">Robert Brown</a></p>
+          <p><strong>From:</strong> Anantapur</p>
+          <p><strong>College:</strong> IIT Hyderabad</p>
+          <p><strong>Feedback:</strong> "A life-changing event at Microsoft!"</p>
+        </div>
+      </div>
+    </section>
+    <section class="mentors">
+        <h2>Our Mentors</h2>
+        <div class="cards">
+          <!-- Card 1 -->
+          <div class="card">
+            <img src="mentor1.jpg" alt="Mentor 1">
+            <h3>John Doe</h3>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/johndoe">John Doe</a></p>
+            <p><strong>From:</strong> Hyderabad</p>
+            <p><strong>College:</strong> IIT Madras</p>
+            <p><strong>Feedback:</strong> "An amazing experience with SSCN!"</p>
+          </div>
+  
+          <!-- Card 2 -->
+          <div class="card">
+            <img src="mentor2.jpg" alt="Mentor 2">
+            <h3>Jane Smith</h3>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/janesmith">Jane Smith</a></p>
+            <p><strong>From:</strong> Chennai</p>
+            <p><strong>College:</strong> Anantapur University</p>
+            <p><strong>Feedback:</strong> "SSC is doing great work for students."</p>
+          </div>
+  
+          <!-- Card 3 -->
+          <div class="card">
+            <img src="mentor3.jpg" alt="Mentor 3">
+            <h3>Robert Brown</h3>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/robertbrown">Robert Brown</a></p>
+            <p><strong>From:</strong> Anantapur</p>
+            <p><strong>College:</strong> IIT Hyderabad</p>
+            <p><strong>Feedback:</strong> "A life-changing event at Microsoft!"</p>
+          </div>
+        </div>
+      </section>
+      <section class="mentors">
+        <h2>Our Mentors</h2>
+        <div class="cards">
+          <!-- Card 1 -->
+          <div class="card">
+            <img src="mentor1.jpg" alt="Mentor 1">
+            <h3>John Doe</h3>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/johndoe">John Doe</a></p>
+            <p><strong>From:</strong> Hyderabad</p>
+            <p><strong>College:</strong> IIT Madras</p>
+            <p><strong>Feedback:</strong> "An amazing experience with SSCN!"</p>
+          </div>
+  
+          <!-- Card 2 -->
+          <div class="card">
+            <img src="mentor2.jpg" alt="Mentor 2">
+            <h3>Jane Smith</h3>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/janesmith">Jane Smith</a></p>
+            <p><strong>From:</strong> Chennai</p>
+            <p><strong>College:</strong> Anantapur University</p>
+            <p><strong>Feedback:</strong> "SSC is doing great work for students."</p>
+          </div>
+  
+          <!-- Card 3 -->
+          <div class="card">
+            <img src="mentor3.jpg" alt="Mentor 3">
+            <h3>Robert Brown</h3>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/robertbrown">Robert Brown</a></p>
+            <p><strong>From:</strong> Anantapur</p>
+            <p><strong>College:</strong> IIT Hyderabad</p>
+            <p><strong>Feedback:</strong> "A life-changing event at Microsoft!"</p>
+          </div>
+        </div>
+      </section>
+      <section class="mentors">
+        <h2>Our Mentors</h2>
+        <div class="cards">
+          <!-- Card 1 -->
+          <div class="card">
+            <img src="mentor1.jpg" alt="Mentor 1">
+            <h3>John Doe</h3>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/johndoe">John Doe</a></p>
+            <p><strong>From:</strong> Hyderabad</p>
+            <p><strong>College:</strong> IIT Madras</p>
+            <p><strong>Feedback:</strong> "An amazing experience with SSCN!"</p>
+          </div>
+  
+          <!-- Card 2 -->
+          <div class="card">
+            <img src="mentor2.jpg" alt="Mentor 2">
+            <h3>Jane Smith</h3>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/janesmith">Jane Smith</a></p>
+            <p><strong>From:</strong> Chennai</p>
+            <p><strong>College:</strong> Anantapur University</p>
+            <p><strong>Feedback:</strong> "SSC is doing great work for students."</p>
+          </div>
+  
+          <!-- Card 3 -->
+          <div class="card">
+            <img src="mentor3.jpg" alt="Mentor 3">
+            <h3>Robert Brown</h3>
+            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/robertbrown">Robert Brown</a></p>
+            <p><strong>From:</strong> Anantapur</p>
+            <p><strong>College:</strong> IIT Hyderabad</p>
+            <p><strong>Feedback:</strong> "A life-changing event at Microsoft!"</p>
+          </div>
+        </div>
+      </section>
+
+
+
+  <div class="container">
+    <h1>Key Sessions & Learnings</h1>
+    <div class="sessions">
+      <div class="session-card">
+        <div class="session-title">Scaling the Unscalable</div>
+        <div class="session-speaker">Siddharth Vijay (AVP, Engineering | Baazi Games)</div>
+        <div class="session-description">A fascinating session on managing real-time gaming platforms with high concurrency, reliability, and security.</div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-title">Get Sh*t Done in IT</div>
+        <div class="session-speaker">Michael Seidl (Owner | Microsoft MVP)</div>
+        <div class="session-description">Practical insights on improving IT productivity and efficiency.</div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-title">CLI for Microsoft 365</div>
+        <div class="session-speaker">Arjun Menon (Microsoft MVP)</div>
+        <div class="session-description">A deep dive into using CLI as a productivity booster for M365 workloads.</div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-title">AI Integration with DevOps</div>
+        <div class="session-speaker">Praveen Singampalli (Mentor | HeyDevOps)</div>
+        <div class="session-description">Showcased how AI can optimize DevOps, automate tasks, and drive better decision-making.</div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-title">Future of Observability in the Microsoft Ecosystem</div>
+        <div class="session-speaker">Zameer Fouzan (Lead Developer Relations | New Relic)</div>
+        <div class="session-description">Discussed advancements in observability with OpenTelemetry.</div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-title">Cool Demos of Azure Copilot & Security Copilot</div>
+        <div class="session-speaker">Morten Waltorp Knudsen (MVP | 2LinkIT)</div>
+        <div class="session-description">Engaging hands-on demos of how Azure and Security Copilot optimize performance and ensure security.</div>
+      </div>
+
+      <div class="session-card">
+        <div class="session-title">Maximizing PowerShell with GitHub Copilot</div>
+        <div class="session-speaker">Stoyan Chalakov (Sr. Consultant | Microsoft MVP)</div>
+        <div class="session-description">Advanced coding tips using GitHub Copilot for PowerShell.</div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <h1>Our Travel Experience</h1>
+  <div class="grid-container">
+    <div class="card">
+      <h3>Starting Point</h3>
+      <p>I, along with Sai Akash, began our trip from Machilipatnam. We were later joined by Gayathri, Sreelakshmi, Yashwanth, Dileep, and Madhan at Gudivada Station.</p>
+    </div>
+    <div class="card">
+      <h3>Train Delay</h3>
+      <p>Our train to Secunderabad was delayed by two hours, so we reached at 7:45 AM and took the metro.</p>
+    </div>
+    <div class="card">
+      <h3>Ticket Mishap</h3>
+      <p>I mistakenly bought metro tickets for only 7 people, leaving Sreelakshmi without a ticket. However, we managed the situation quickly and had a fun time navigating the metro.</p>
+    </div>
+    <div class="card">
+      <h3>Crazy Auto Ride</h3>
+      <p>One crazy moment was squeezing 8 people into a single auto to reach Microsoft Gachibowli. It was chaotic but incredibly fun!</p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="content">
+      <h1>Hurdles at Microsoft</h1>
+      <p>
+        Upon reaching Gate 4 at Microsoft Office, some challenges awaited us:
+      </p>
+      <ul>
+        <li>
+          <strong>Sreelakshmi's Missing Confirmation:</strong> She didn’t have the confirmation ticket, but I managed to get her inside.
+        </li>
+        <li>
+          <strong>Nandyal Team's Delay:</strong> The mentors and students from Nandyal arrived late and weren’t allowed in. After much effort and with Swathi’s mother’s support, 5 members, including 4 SSC mentors, were able to attend.
+        </li>
+      </ul>
+      <p>
+        Special thanks to Swathi’s mother, whose determination made all the difference. I even gifted her one of the medals I received for answering Q&A sessions during the event – a small token of respect for her efforts.
+      </p>
+      <h2>Key Highlights of the Event</h2>
+      <ul>
+        <li>
+          <strong>Networking:</strong> I connected with industry leaders like Morten Knudsen, Praveen Singampalli, and Kamal Shree. The SSC Community was widely recognized, and many participants appreciated our work.
+        </li>
+        <li>
+          <strong>Recognition:</strong> I answered multiple questions during the sessions, earning two medals and a t-shirt.
+        </li>
+        <li>
+          <strong>Memorable Lunch:</strong> We had a delicious lunch and clicked team photos to capture the day’s memories.
+        </li>
+      </ul>
+      <h2>Why Attend Events Like This?</h2>
+      <p>
+        After the event, we held a mentors’ meeting to discuss the key takeaways:
+      </p>
+      <ul>
+        <li>
+          These events shift mindsets, inspire innovation, and open up opportunities for internships, jobs, and networking.
+        </li>
+        <li>
+          They help build communities and connections that can shape our future careers.
+        </li>
+      </ul>
+      <h2>The Journey Back: A Crazy Adventure</h2>
+      <p>
+        After bidding goodbye to Microsoft, we faced another challenge while traveling back. Our plans to book a bus failed, so we took a general train. Despite being tired, the journey was filled with laughter, learning, and small ego fights.
+      </p>
+      <h2>Ending on a High Note</h2>
+      <p>
+        One of the best moments was a surprise birthday gift from SSC mentors. It truly made my day and filled me with gratitude.
+      </p>
+      <p>
+        This experience has strengthened my desire to work at Microsoft someday and made me even more committed to expanding the Student Service Community.
+      </p>
+      <p>
+        Thank you to the Microsoft team, SSC mentors, and everyone who made this day so special.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
