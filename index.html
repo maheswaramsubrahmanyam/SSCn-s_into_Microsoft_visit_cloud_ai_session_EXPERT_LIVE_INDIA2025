@@ -1,489 +1,1155 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SSC at Microsoft Event</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSC_DEV_HACK Journey</title>
+    <link rel="stylesheet" href="blog.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --text-color: #1f2937;
+    --background-color: #f8fafc;
+    --accent-color: #dbeafe;
+    --gradient-start: #2563eb;
+    --gradient-end: #1e40af;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Base styles (mobile first) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background: linear-gradient(135deg, #f6f7f9 0%, #ffffff 100%);
+    font-size: 16px;
+}
+
+/* Enhanced Header & Navigation */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-bar {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.ssc-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.ssc-logo:hover {
+    transform: scale(1.1);
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background: var(--accent-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* Enhanced Hero Section */
+.hero {
+    min-height: 60vh;
+    padding: 6rem 1rem 4rem;
+    margin-top: 60px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(37,99,235,0.1) 0%, rgba(30,64,175,0.2) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('path-to-pattern.svg') center/cover;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Main Content */
+.blog-content {
+    max-width: 95%;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.section-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    margin: 2.5rem 0;
+    transition: transform 0.3s ease;
+}
+
+.section-container:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Journey Section */
+.team-bonding,
+.arrival-section,
+.hackathon-experience,
+.challenges,
+.turning-point,
+.magic-of-two {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.team-bonding:hover,
+.arrival-section:hover,
+.hackathon-experience:hover,
+.challenges:hover,
+.turning-point:hover,
+.magic-of-two:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Section Headers */
+.section-header {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+/* Content Lists */
+.content-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+.content-list li {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    background: var(--background-color);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Journey Timeline Enhancement */
+.journey-timeline {
+    position: relative;
+    padding: 2rem;
+    margin: 3rem 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+}
+
+.timeline-event {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    background: var(--background-color);
+    border-radius: 12px;
+    position: relative;
+}
+
+.timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    width: 1rem;
+    height: 1rem;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transform: translateY(-50%);
+}
+
+/* Special Sections */
+.challenges {
+    background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+    border-left: 5px solid #fc8181;
+}
+
+.turning-point {
+    background: linear-gradient(135deg, #f0fff4 0%, #fff 100%);
+    border-left: 5px solid #68d391;
+}
+
+.magic-of-two {
+    background: linear-gradient(135deg, #ebf8ff 0%, #fff 100%);
+    border-left: 5px solid #63b3ed;
+}
+
+/* Content Paragraphs */
+.section-content p {
+    line-height: 1.8;
+    margin: 1.5rem 0;
+    color: var(--text-color);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .section-container {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
     }
 
-    body {
-      line-height: 1.6;
-      color: #333;
+    .content-list li {
+        padding: 0.8rem;
     }
 
-    header {
-      background: #0047AB;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
+    .section-header {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .blog-content {
+        max-width: 80%;
     }
 
-    header h1 {
-      font-size: 2rem;
+    .section-container {
+        padding: 3rem;
+        margin: 3rem 0;
+    }
+}
+
+/* Animations */
+.section-container {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Additional Enhancements */
+.highlight-box {
+    background: var(--accent-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.quote-box {
+    font-style: italic;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--primary-color);
+    background: rgba(37,99,235,0.05);
+}
+
+/* Enhanced Team Members Section */
+.team-members {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.member {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.member:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.member img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+    border: 4px solid var(--accent-color);
+}
+
+/* Enhanced Gallery */
+.event-gallery {
+    margin: 3rem 0;
+    padding: 2rem 1rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.gallery-item img {
+    width: 75%;
+    overflow: visible;
+    height: 350px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .image-caption {
+    transform: translateY(0);
+}
+
+/* Enhanced Timeline */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--primary-color);
+    opacity: 0.3;
+}
+
+.timeline-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    margin: 2rem 0;
+    transition: transform 0.3s ease;
+}
+
+.timeline-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--hover-shadow);
+}
+
+/* Typography Enhancements */
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+}
+
+/* Animations */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.member, .gallery-item, .timeline-item {
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Media Queries remain the same but with enhanced styles */
+@media (min-width: 768px) {
+    .nav-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 720px;
+        margin: 0 auto;
     }
 
-    .container {
-      padding: 1rem;
-    }
-    .event-description {
-      margin-bottom: 2rem;
+    .hero h1 {
+        font-size: 3rem;
     }
 
-    .event-description h2 {
-      font-size: 1.5rem;
-      color: #0047AB;
+    .blog-content {
+        max-width: 720px;
     }
 
-    .cards {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: 1fr;
-    }
-
-    .card {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px 8px 0 0;
-    }
-
-    .card h3 {
-      margin-top: 1rem;
-      font-size: 1.25rem;
-      color: #0047AB;
-    }
-
-    .card p {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-    }
-
-    .card a {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: #fff;
-      background: #0047AB;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 0.9rem;
-    }
-
-    .card a:hover {
-      background: #003580;
-    }
-
-    @media (min-width: 768px) {
-      .cards {
+    .team-members {
         grid-template-columns: repeat(2, 1fr);
-      }
+        gap: 1.5rem;
     }
 
-    @media (min-width: 1024px) {
-      .cards {
-        grid-template-columns: repeat(3, 1fr);
-      }
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
-    
-    .container {
+}
+
+@media (min-width: 1024px) {
+    .nav-bar {
+        max-width: 960px;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .blog-content {
+        max-width: 960px;
+    }
+
+    .team-members {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .gallery-item img {
+        height: 250px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .nav-bar {
+        max-width: 1200px;
+    }
+
+    .blog-content {
+        max-width: 1200px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Animations and Transitions */
+.gallery-item {
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Add smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}-->
+
+.container {
       max-width: 1200px;
-      margin: auto;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      font-size: 2rem;
-      color: #0078d4;
-    }
-
-    .sessions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .session-card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      width: 100%;
-      max-width: 350px;
-      overflow: hidden;
-      text-align: center;
-      padding: 15px;
-    }
-
-    .session-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .session-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #0078d4;
-      margin-bottom: 10px;
-    }
-
-    .session-speaker {
-      font-size: 0.9rem;
+      font-size: 2.5em;
       color: #555;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 30px;
+    }
+
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    /* Cloud-Style Feedback Card */
+    .feedback-card {
+      background: #fff;
+      
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px 30px;
+      border-top-left-radius: 130px;
+      border-bottom-right-radius: 130px;
+      border-bottom-left-radius:70px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Tail for Cloud Shape */
+    .feedback-card::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 30px;
+      width: 40px;
+      height: 30px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: -10px 10px 0 #fff;
+    }
+
+    .feedback-name {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #37474f;
       margin-bottom: 10px;
     }
 
-    .session-description {
-      font-size: 0.9rem;
-      color: #666;
+    .feedback-text {
+      font-size: 1em;
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .feedback-card:hover .feedback-name {
+      color: #00796b;
     }
 
     @media (max-width: 768px) {
-      .session-card {
-        width: 100%;
-      }
-
       h1 {
-        font-size: 1.5rem;
+        font-size: 2em;
       }
     }
-    .card {
-      grid-column: span 12;
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, background-color 0.3s ease;
-    }
+    strong{
+        font-weight: 800;
+        color: rgb(9, 9, 65);
+        font-size: 20px;
 
-    .card:hover {
-      transform: translateY(-10px);
-      background-color: #e9f5ff;
     }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.2rem;
-      color: #333;
+    .ab{
+      color:white;  
     }
-
-    .card p {
-      font-size: 1rem;
-      line-height: 1.6;
-      color: #666;
-    }
-
-    @media (min-width: 768px) {
-      .card {
-        grid-column: span 6;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .card {
-        grid-column: span 4;
-      }
-    }
-    
-  </style>
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Student Service Community at Microsoft</h1>
-  </header>
+    <header class="header">
+        <nav class="nav-bar">
+            <div class="logo">
+                <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/t_Logo overlay/v1736098848/SSC_DEV_HACK_NELLORE_NARAYANA_ENG_CLG/SSClogo_mrxxd6.jpg" alt="Student Service Community Logo" class="ssc-logo">
+                <span>STUDENT SERVICE COMMUNITY SSC</span>
+            </div>
+            <!-- <div class="nav-links">
+                <a href="#journey">Journey</a>
+                <a href="#hackathon">Hackathon</a>
+                <a href="#victory">Victory</a>
+            </div> -->
+        </nav>
+    </header>
 
-  <div class="container">
-    <section class="event-description">
-      <h2>A Remarkable Day at Microsoft Office</h2>
-      <p>
-        Date: February 15, 2025<br>
-        Location: Microsoft Office, Gachibowli
-      </p>
-      <p>Yesterday was an unforgettable day as I had the incredible opportunity to attend a Microsoft Office event with the Student Service Community Network (SSCN)...</p>
-    </section>
+    <main class="main-content">
+        <section class="hero">
+            <h1>A Remarkable Day for SSCn's at Microsoft Office</h1>
+            <p class="subtitle"> <strong> Date:</strong> February 15, 2025<br>
+<strong>Location:</strong> Microsoft Office, Gachibowli<br>
 
-    <section class="mentors">
-      <h2>Our Mentors</h2>
-      <div class="cards">
-        <!-- Card 1 -->
-        <div class="card">
-          <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739721228/SSC_HYD_MICROSOFT/sathi_uwkpyu.jpg" alt="Mentor 1">
-          <h3>John Doe</h3>
-          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/johndoe">John Doe</a></p>
-          <p><strong>From:</strong> Hyderabad</p>
-          <p><strong>College:</strong> IIT Madras</p>
-          <p><strong>Feedback:</strong> "An amazing experience with SSCN!"</p>
+Yesterday was an unforgettable day as I had the incredible opportunity to attend a Microsoft Office event with the Student Service Community Network (SSCN). We had representatives from Chennai, Anantapur district (Andhra Pradesh), Hyderabad, and IIT Madras. The event saw over 90 registrations, with 25 confirmed attendees and 20 participants finally joining us at Microsoft.</p>
+        </section>
+
+        <article class="blog-content">
+            <section class="introduction">
+                <p>This was a great experience filled with learning, networking, and lots of fun. Here’s a quick look at the day:</p>
+            </section>
+
+            <section class="team-section">
+                <h2>The Core Team Of SSC</h2>
+                <div class="team-members">
+                    <div class="member team-lead">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1736101687/SSC_DEV_HACK_NELLORE_NARAYANA_ENG_CLG/maheswaram_subrahmanyam_pgidvm.jpg" alt="Maheswaram Subrahmanyam">
+                        <h3>Maheswaram Subrahmanyam</h3>
+                        <p class="member-role">Team Lead & SSC Founder</p>
+                        <p>VKR VNB AGK Engineering College</p>
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/maheswaram-subrahmanyam-361238275/" target="_blank">LinkenIn</a></button>
+                    </div>
+                    <div class="member">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739721228/SSC_HYD_MICROSOFT/sathi_uwkpyu.jpg" alt="Swaty">
+                        <h3>P Swaty</h3>
+                        <p><span>SSC Mentor</span></p>
+                        <p>Santhiram Engineering College</p>
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/swathi-pokuri-607859312/" target="_blank">LinkenIn</a></button>
+                    </div>
+                    <div class="member">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739730095/SSC_HYD_MICROSOFT/susmitha_cnapvw.jpg" alt="susmitha">
+                        <h3>Susmitha</h3>
+                        <p><span>SSC Mentor</span></p>
+                        <p>ASHOKA WOMEN'S ENGINEERING COLLEGE</p>
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/susmitha-surasura-86460828a/" target="_blank">LinkenIn</a></button>
+                    </div>
+                    
+                    
+                    <div class="member">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739723042/SSC_HYD_MICROSOFT/SUDHA_t1iksw.jpg" alt="Chandu Sri">
+                        <h3>SAI SUDHA SUGALI 
+                        </h3>
+                        <p><span>SSC Mentor</span></p>
+                        <p>Santhiram Engineering College (Nandyal)</p>
+                        
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/sugali-sai-sudha-904bb9305/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkenIn</a></button>
+                    </div>
+                    <div class="member">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739723347/SSC_HYD_MICROSOFT/kadhir_kvg5hc.jpg" alt="SHAIK KHADAR VALI ">
+                        <h3>SHAIK KHADAR VALI</h3>
+                        <p><span>SSC Mentor</span></p>
+                        <p>SVR engineering college (Nandyal)</p>
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/khadar-vali-shaik-a2aa30270/" target="_blank">LinkenIn</a></button>
+                    </div>
+                    
+                </div>
+            </section>
+            <!-- <section class="team-section">
+                <h2>The Enthusaitc SSCn's</h2>
+                <div class="team-members">
+                    <div class="member team-lead">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1736101687/SSC_DEV_HACK_NELLORE_NARAYANA_ENG_CLG/maheswaram_subrahmanyam_pgidvm.jpg" alt="Maheswaram Subrahmanyam">
+                        <h3>Maheswaram Subrahmanyam</h3>
+                        <p class="member-role">Team Lead & SSC Founder</p>
+                        <p>VKR VNB AGK Engineering College</p>
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/maheswaram-subrahmanyam-361238275/" target="_blank">LinkenIn</a></button>
+                    </div>
+                    <div class="member">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739723042/SSC_HYD_MICROSOFT/SUDHA_t1iksw.jpg" alt="Chandu Sri">
+                        <h3>SAI SUDHA SUGALI 
+                        </h3>
+                        <p><span>SSC Mentor</span></p>
+                        <p>Santhiram Engineering College (Nandyal)</p>
+                        
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/sugali-sai-sudha-904bb9305/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkenIn</a></button>
+                    </div>
+                    <div class="member">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739723347/SSC_HYD_MICROSOFT/kadhir_kvg5hc.jpg" alt="SHAIK KHADAR VALI ">
+                        <h3>SHAIK KHADAR VALI</h3>
+                        <p><span>SSC Mentor</span></p>
+                        <p>SVR engineering college (Nandyal)</p>
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/khadar-vali-shaik-a2aa30270/" target="_blank">LinkenIn</a></button>
+                    </div>
+                    <div class="member">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1736101676/SSC_DEV_HACK_NELLORE_NARAYANA_ENG_CLG/WhatsApp_Image_2025-01-05_at_23.25.27_9469efc9_ywdkok.jpg" alt="Nandini">
+                        <h3>Vallabi Nandini</h3>
+                        <p><span>SSC Mentor</span></p>
+                        <p>DVR &DR.HS MIC COLLEGE OF TECHNOLOGY</p>
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/nandinivallabi22h71a5459?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">LinkenIn</a></button>
+                    </div>
+                    
+                    <div class="member">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739721228/SSC_HYD_MICROSOFT/sathi_uwkpyu.jpg" alt="Swaty">
+                        <h3>P Swaty</h3>
+                        <p><span>SSC Mentor</span></p>
+                        <p>Santhiram Engineering College</p>
+                        <button class="btn btn-black"> <a href="https://www.linkedin.com/in/swathi-pokuri-607859312/" target="_blank">LinkenIn</a></button>
+                    </div>
+                </div>
+                <p>Despite their lack of prior hackathon experience, I was confident in their potential. My goal was to help them understand what hackathons are all about—the brainstorming, the execution, and the final presentation. It was a diverse team, not only in skills but also in backgrounds, and this diversity added strength to our project.</p>
+            </section>
+             -->
+            <section class="journey-timeline">
+                <h2>Our Journey</h2>
+                <div class="timeline">
+
+                    <!-- Timeline items added via JavaScript -->
+                </div>
+            </section>
+            <section class="event-gallery">
+                <h2>Event Remembrance </h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739731772/SSC_HYD_MICROSOFT/team_ae1puj.jpg" alt="Team working during hackathon" loading="lazy">
+                        <div class="image-caption">Mentor With SSCn's </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722956/SSC_HYD_MICROSOFT/IMG-20250216-WA0017_ikjyt0.jpg" alt="Project presentation" loading="lazy">
+                        <div class="image-caption">SSCn's From Chennai</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739732079/SSC_HYD_MICROSOFT/swathi_team_bort8z.jpg" alt="Award ceremony" loading="lazy">
+                        <div class="image-caption">Our Mentors Group Snap</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722953/SSC_HYD_MICROSOFT/IMG-20250216-WA0005_qvk2vw.jpg" alt="Team discussion" loading="lazy">
+                        <div class="image-caption">Selfi with SSCn's</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="team-bonding">
+                <h2>The Journey: Laughter & Challenges
+                </h2>
+                <p>The journey itself was an adventure!</p>
+                <ul >
+                    <li> <strong>Starting Point: </strong>I, along with Sai Akash, began our trip from Machilipatnam. We were later joined by Gayathri, Sreelakshmi, Yashwanth, Dileep, and Madhan at Gudivada Station.</li>
+                    <li> <strong>Train Delay: </strong>Our train to Secunderabad was delayed by two hours, so we reached at 7:45 AM and took the metro.</li>
+                    <li> <strong>Ticket Mishap: </strong>I mistakenly bought metro tickets for only 7 people, leaving Sreelakshmi without a ticket. However, we managed the situation quickly and had a fun time navigating the metro.</li>
+                    
+                </ul>
+                <p>One crazy moment was squeezing 8 people into a single auto to reach Microsoft Gachibowli. It was chaotic but incredibly fun!</p>
+            </section>
+
+            <section class="arrival-section">
+                <h2>Hurdles at Microsoft</h2>
+                <p>Upon reaching Gate 4 at Microsoft Office, some challenges awaited us:</p>
+                <ul>
+                    <li><strong>Sreelakshmi's Missing Confirmation:</strong> She didn’t have the confirmation ticket, but I managed to get her inside.</li>
+                    <li><strong>Nandyal Team's Delay:</strong> The mentors and SSCn's from Nandyal arrived late and weren’t allowed in. After much effort and with Swathi’s mother’s support, 5 members, including 4 SSC mentors, were able to attend.</li><br>
+<p>I thank to Swathi's Mother For her unwavering support, I handed over one of the medals I received during the event to Swathi’s mother. It was a token of appreciation for her fight, her belief in us, and her role in ensuring the SSC mentors didn’t miss out on this life-changing experience. Words like "thank you" felt too small for her contribution, so this medal now symbolizes our respect and gratitude.</p>                    </ul>
+            </section>
+            <section class="event-gallery">
+                <h2> Beauty of Microsoft </h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://media.glassdoor.com/l/46/e2/ee/d5/microsoft-hyderabad-campus.jpg?signature=051f998f14ac804774b4a6b49c341df852a79417180222e8298a288fcd0bb311" alt="Team working during hackathon" loading="lazy">
+                        <div class="image-caption">Clasual meeting place</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://media.glassdoor.com/l/35/c1/cd/b8/cafeteria.jpg?signature=080c5f2ed30fc6cf373fc0f1a5696038cf7863ef521939fd3836971de3f221b0" alt="Project presentation" loading="lazy">
+                        <div class="image-caption">Out View</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/mcaps-msidc-hyderabad-campus-banner:VP2-859x540" alt="Award ceremony" loading="lazy">
+                        <div class="image-caption">Microsoft </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722937/SSC_HYD_MICROSOFT/IMG-20250215-WA0005_uniq0t.jpg" alt="Team discussion" loading="lazy">
+                        <div class="image-caption">Seminar Hall</div>
+                    </div>
+                </div>
+            </section>
+            <section class="arrival-section">
+                <h2>Key Highlights of the Event </h2>
+                <p>Upon reaching Gate 4 at Microsoft Office, some challenges awaited us:</p>
+                <ul>
+                    <li><strong>Networking: </strong> I connected with industry leaders like Morten Knudsen, Praveen Singampalli, and Kamal Shree. The SSC Community was widely recognized, and many participants appreciated our work.</li>
+                    <li><strong>Recognition:</strong>  I answered multiple questions during the sessions, earning two medals and a t-shirt.</li>
+                    <li><strong>Memorable Lunch:</strong> We had a delicious lunch and clicked team photos to capture the day’s memories.</li>
+            </section>
+
+            <section class="hackathon-experience">
+                <h2>Key Sessions & Learnings</h2>
+                <p>The event featured a series of impactful sessions delivered by industry experts and Microsoft MVPs. Some of the highlights include:</p> 
+               <div class="experience-content">
+                    <h3>Scaling the Unscalable</h3>
+                    <a href="https://www.linkedin.com/in/sidvijay18/"><h5>Siddharth Vijay (AVP, Engineering | Baazi Games)</h5></a>
+                    <p>A fascinating session on managing real-time gaming platforms with high concurrency, reliability, and security.</p>                    
+                    
+                </div>
+                <div class="experience-content">
+    <h3>Get Sh*t Done in IT</h3>
+    <a href="https://www.linkedin.com/in/seidlm/"><h5>Michael Seidl (Owner | Microsoft MVP)</h5></a>
+    <p>Practical insights on improving IT productivity and efficiency.</p>
+</div>
+
+<div class="experience-content">
+    <h3>CLI for Microsoft 365</h3>
+    <a href="https://www.linkedin.com/in/arjunumenon/"><h5>Arjun Menon (Microsoft MVP)</h5></a>
+    <p>A deep dive into using CLI as a productivity booster for M365 workloads.</p>
+</div>
+
+<div class="experience-content">
+    <h3>AI Integration with DevOps</h3>
+    <a href="https://www.linkedin.com/in/praveen-singampalli/"><h5>Praveen Singampalli (Mentor | HeyDevOps)</h5></a>
+    <p>Showcased how AI can optimize DevOps, automate tasks, and drive better decision-making.</p>
+</div>
+
+<div class="experience-content">
+    <h3>Future of Observability in the Microsoft Ecosystem</h3>
+    <a href="https://www.linkedin.com/in/zmrfzn/"><h5>Zameer Fouzan (Lead Developer Relations | New Relic)</h5></a>
+    <p>Discussed advancements in observability with OpenTelemetry.</p>
+</div>
+
+<div class="experience-content">
+    <h3>Cool Demos of Azure Copilot & Security Copilot</h3>
+    <a href="https://www.linkedin.com/in/mortenwaltorpknudsen/"><h5>Morten Waltorp Knudsen (MVP | 2LinkIT)</h5></a>
+    <p>Engaging hands-on demos of how Azure and Security Copilot optimize performance and ensure security.</p>
+</div>
+
+<div class="experience-content">
+    <h3>Maximizing PowerShell with GitHub Copilot</h3>
+    <a href="https://www.linkedin.com/in/stoyan-chalakov-06725958/"><h5>Stoyan Chalakov (Sr. Consultant | Microsoft MVP)</h5></a>
+    <p>Advanced coding tips using GitHub Copilot for PowerShell.</p>
+</div>
+
+                <div class="challenges">
+                    <h3>Challenges Along the Way</h3>
+                    <p>The journey wasn’t without its share of hurdles. The train from Machilipatnam to Secunderabad was delayed by two hours, putting pressure on our carefully planned schedule. Additionally, a metro ticket mishap left Sreelakshmi without a valid ticket, causing confusion that required quick thinking to resolve. At Microsoft’s security gates, some attendees faced entry issues due to missing confirmation tickets or delays, leading to a tense situation that demanded persistent efforts to ensure everyone’s participation.</p>
+                </div>
+                <div class="turning-point">
+                    <h3>Turning the Tide</h3>
+                    <p>Despite the challenges, the team managed to turn things around with resilience and teamwork. Quick problem-solving ensured that last-minute ticket and entry issues didn’t derail our plans. A pivotal moment came when Swathi’s mother stepped in to assist, helping the Nandyal team gain access to the event. The efforts paid off, as our active participation in the Q&A sessions earned us recognition in the form of medals and t-shirts, transforming obstacles into moments of pride and accomplishment.</p>
+                </div>
+            </section>
+            <section class="arrival-section">
+                <h2>Why Attend Events Like This?</h2>
+                <p>After the event, we held a mentors’ meeting to discuss the key takeaways:</p>
+                <ul>
+<li>These events shift mindsets, inspire innovation, and open up opportunities for internships, jobs, and networking.</li>
+<li>They help build communities and connections that can shape our future careers.</li>                    
+            </section>
+            <section class="magic-of-two">
+                <h2>The Journey Back: A Crazy Adventure</h2>
+                <br>
+                <p>After bidding goodbye to Microsoft, we faced another challenge while traveling back. Our plans to book a bus failed, so we took a general train. Despite being tired, the journey was filled with laughter, learning, and small ego fights.</p>
+                <br>
+                <h2>Ending on a High Note</h2>
+                <br>
+                <p>One of the best moments was a surprise birthday gift from SSC mentors. It truly made my day and filled me with gratitude</p>
+                <p>This experience has strengthened my desire to work at Microsoft someday and made me even more committed to expanding the Student Service Community.</p>
+                <p>Thank you to the Microsoft team, SSC mentors, and everyone who made this day so special.</p>
+            </section>
+
+            <section class="victory-section">
+                <h2>Won Medels and T-shirts</h2>
+                <div class="prize-announcement">
+                    <h3>Awarded Medals and T-shirts:</h3>
+                    <p>Recognized for outstanding performance in Q&A sessions during a Microsoft event.</p>
+                </div>
+                <div class="donation">
+                    <h3>Showcased Expertise & Interactive Engagement:  </h3>
+                    <p>Demonstrated strong technical knowledge and problem-solving skills in front of experts, Actively contributed to discussions,leaving a positive impression on the Microsoft team.</p>
+                </div>
+            </section>
+
+            
+            <div class="container">
+                <h2>Feedbacks</h2>
+                <div class="feedback-grid">
+                  
+                  <!-- Feedback Card 1 -->
+                  <div class="feedback-card">
+                    <div class="feedback-name">Sai Akash</div>
+                    <p class="feedback-text">
+                      Had an amazing experience visiting the Microsoft Office in Hyderabad for the first time! The workshop was insightful, offering great exposure to cutting-edge technology and industry best practices. Truly a memorable experience, and I am grateful for the SSC team and my amazing gang. I learned so many new things from this workshop.
+                    </p>
+                  </div>
+            
+                  <!-- Feedback Card 2 -->
+                  <div class="feedback-card">
+                    <div class="feedback-name">Madhu Kumar</div>
+                    <p class="feedback-text">
+                      That was a beautiful experience visiting the Microsoft Office in Hyderabad for the first time! The workshop offered great exposure to cutting-edge technology and industry best practices. It was memorable and motivating. I learned so many valuable insights from this workshop.
+                    </p>
+                  </div>
+            
+                  <!-- Feedback Card 3 -->
+                  <div class="feedback-card">
+                    <div class="feedback-name">Sai Sudha</div>
+                    <p class="feedback-text">
+                      It was a great experience attending Microsoft ELI-2025. I learned about technology, networking, communication, and knowledge sharing. The SSC team was very open to communication, and special thanks to Mr. Maheswaram Subrahmanyam for guiding us and taking responsibility for this amazing journey. I enjoyed it a lot, thank you!
+                    </p>
+                  </div>
+            
+                  <!-- Feedback Card 4 -->
+                  <div class="feedback-card">
+                    <div class="feedback-name">Gayathri</div>
+                    <p class="feedback-text">
+                      It was an incredible experience! The sessions were not only informative but also eye-opening, making me realize how much there is to explore and learn. The trip to Hyderabad was memorable, and a special thanks to Mr. Subrahmanyam for his guidance throughout the event. Looking forward to more such inspiring opportunities!
+                    </p>
+                  </div>
+            
+                  <!-- Feedback Card 5 -->
+                  <div class="feedback-card">
+                    <div class="feedback-name">Krishnaveni</div>
+                    <p class="feedback-text">
+                      Visiting Experts Live India-2025 was an enriching experience. The sessions were engaging, and I gained valuable insights from industry experts. Thanks to Mr. Subrahmanyam for organizing this opportunity and making it possible for us to participate in such a well-organized event!
+                    </p>
+                  </div>
+            
+                  <!-- Feedback Card 6 -->
+                  <div class="feedback-card">
+                    <div class="feedback-name">Yashwanth</div>
+                    <p class="feedback-text">
+                      Attending Experts Live India was a fantastic experience! I learned that curiosity and the desire to grow matter more than years of experience. A special thanks to Mr. Subrahmanyam for his guidance and inspiration. I thoroughly enjoyed the event and felt excited throughout!
+                    </p>
+                  </div>
+                  
+                </div>
+              </div>
+            
+            <section class="event-gallery">
+                <h2>Event Highlights</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739723031/SSC_HYD_MICROSOFT/IMG-20250216-WA0133_wk2trl.jpg" alt="Team working during hackathon" loading="lazy">
+                        <div class="image-caption">Microsoft Copilot session</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739723015/SSC_HYD_MICROSOFT/IMG-20250216-WA0100_bu4hik.jpg" alt="Project presentation" loading="lazy">
+                        <div class="image-caption">SSCn's from Chennai</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739723016/SSC_HYD_MICROSOFT/IMG-20250216-WA0105_ylgdr7.jpg" loading="lazy">
+                        <div class="image-caption">Microsoft MVP </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722974/SSC_HYD_MICROSOFT/IMG-20250216-WA0050_kyhm2v.jpg" alt="Team discussion" loading="lazy">
+                        <div class="image-caption">Team </div>
+                    </div>
+                </div>
+                <br>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722966/SSC_HYD_MICROSOFT/IMG-20250216-WA0044_k9q6w7.jpg" alt="Team working during hackathon" loading="lazy">
+                        <div class="image-caption">TCS Employee</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722966/SSC_HYD_MICROSOFT/IMG-20250216-WA0043_h2poxg.jpg" alt="Project presentation" loading="lazy">
+                        <div class="image-caption">SSCn's </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739728120/SSC_HYD_MICROSOFT/medal_c2ggfg.jpg" loading="lazy">
+                        <div class="image-caption">Microsoft Expert Live India T-shirts</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739723024/SSC_HYD_MICROSOFT/IMG-20250216-WA0112_v58hba.jpg" alt="Team discussion" loading="lazy">
+                        <div class="image-caption"> SSC Team Meet</div>
+                    </div>
+                </div>
+                <br>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722954/SSC_HYD_MICROSOFT/IMG-20250216-WA0008_qbuzr8.jpg" alt="Team working during hackathon" loading="lazy">
+                        <div class="image-caption">Microsoft </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722948/SSC_HYD_MICROSOFT/IMG-20250215-WA0030_asnacj.jpg" alt="Project presentation" loading="lazy">
+                        <div class="image-caption">SSCn's from Chennai</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722941/SSC_HYD_MICROSOFT/IMG-20250215-WA0014_sjph1e.jpg" loading="lazy">
+                        <div class="image-caption">Microsoft MVP </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739723035/SSC_HYD_MICROSOFT/IMG-20250216-WA0139_imppws.jpg" alt="Team discussion" loading="lazy">
+                        <div class="image-caption">Team </div>
+                    </div>
+                </div>
+                <br>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739732347/SSC_HYD_MICROSOFT/sscns2_p0ku5u.jpg" alt="Team working during hackathon" loading="lazy">
+                        <div class="image-caption">Microsoft Visit team Snap</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722948/SSC_HYD_MICROSOFT/IMG-20250215-WA0030_asnacj.jpg" alt="Project presentation" loading="lazy">
+                        <div class="image-caption">Student Service Community</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739732480/SSC_HYD_MICROSOFT/sscn3_sbqg7f.jpg" loading="lazy">
+                        <div class="image-caption"> SSC </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://res.cloudinary.com/dk6egvuyy/image/upload/v1739722957/SSC_HYD_MICROSOFT/IMG-20250216-WA0027_obkko5.jpg" alt="Team discussion" loading="lazy">
+                        <div class="image-caption">Medal for Mom </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer class="footer bg-dark text-white py-4" >
+        <p style="text-align: center;">© 2025 Student_Service_Community. All rights reserved.</p>
+        <div class="container">
+        <h5>Connect with Us</h5>
+        <p>Follow us on social media and stay updated!</p>
+        
+            <!-- WhatsApp Channel -->
+            <a href="https://whatsapp.com/channel/0029VaYTpyWJpe8oGde6sz3K" target="_blank" class="btn btn-outline-light mx-2" aria-label="WhatsApp Channel">
+                <i class="bi bi-whatsapp"></i> WhatsApp Channel
+            </a>
+            <!-- WhatsApp Group -->
+            <a href="https://chat.whatsapp.com/H3AgvLp9axaEb2WUBbI6a1" target="_blank" class="btn btn-outline-light mx-2" aria-label="WhatsApp Group">
+                <i class="bi bi-whatsapp"></i> WhatsApp Group
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/student-service-community-ssc-7a70a52aa/" target="_blank" class="btn btn-outline-light mx-2" aria-label="LinkedIn">
+                <i class="bi bi-linkedin"></i> LinkedIn
+            </a>
+            <div class="d-flex justify-content-center ml-4">
+            <p class="mb-2">
+            <i class="bi bi-envelope"></i> Email: <a href="mailto:studentservicecommunity@gmail.com" class="text-white">studentservicecommunity@gmail.com</a><br>
+            <i class="bi bi-telephone"></i> Phone: <a href="tel:+917569399294" class="text-white">+91 7569399294</a>
+        </p>
         </div>
+        <br>
+        
+        
 
-        <!-- Card 2 -->
-        <div class="card">
-          <img src="mentor2.jpg" alt="Mentor 2">
-          <h3>Jane Smith</h3>
-          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/janesmith">Jane Smith</a></p>
-          <p><strong>From:</strong> Chennai</p>
-          <p><strong>College:</strong> Anantapur University</p>
-          <p><strong>Feedback:</strong> "SSC is doing great work for students."</p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card">
-          <img src="mentor3.jpg" alt="Mentor 3">
-          <h3>Robert Brown</h3>
-          <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/robertbrown">Robert Brown</a></p>
-          <p><strong>From:</strong> Anantapur</p>
-          <p><strong>College:</strong> IIT Hyderabad</p>
-          <p><strong>Feedback:</strong> "A life-changing event at Microsoft!"</p>
-        </div>
-      </div>
-    </section>
-    <section class="mentors">
-        <h2>Our Mentors</h2>
-        <div class="cards">
-          <!-- Card 1 -->
-          <div class="card">
-            <img src="mentor1.jpg" alt="Mentor 1">
-            <h3>John Doe</h3>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/johndoe">John Doe</a></p>
-            <p><strong>From:</strong> Hyderabad</p>
-            <p><strong>College:</strong> IIT Madras</p>
-            <p><strong>Feedback:</strong> "An amazing experience with SSCN!"</p>
-          </div>
-  
-          <!-- Card 2 -->
-          <div class="card">
-            <img src="mentor2.jpg" alt="Mentor 2">
-            <h3>Jane Smith</h3>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/janesmith">Jane Smith</a></p>
-            <p><strong>From:</strong> Chennai</p>
-            <p><strong>College:</strong> Anantapur University</p>
-            <p><strong>Feedback:</strong> "SSC is doing great work for students."</p>
-          </div>
-  
-          <!-- Card 3 -->
-          <div class="card">
-            <img src="mentor3.jpg" alt="Mentor 3">
-            <h3>Robert Brown</h3>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/robertbrown">Robert Brown</a></p>
-            <p><strong>From:</strong> Anantapur</p>
-            <p><strong>College:</strong> IIT Hyderabad</p>
-            <p><strong>Feedback:</strong> "A life-changing event at Microsoft!"</p>
-          </div>
-        </div>
-      </section>
-      <section class="mentors">
-        <h2>Our Mentors</h2>
-        <div class="cards">
-          <!-- Card 1 -->
-          <div class="card">
-            <img src="mentor1.jpg" alt="Mentor 1">
-            <h3>John Doe</h3>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/johndoe">John Doe</a></p>
-            <p><strong>From:</strong> Hyderabad</p>
-            <p><strong>College:</strong> IIT Madras</p>
-            <p><strong>Feedback:</strong> "An amazing experience with SSCN!"</p>
-          </div>
-  
-          <!-- Card 2 -->
-          <div class="card">
-            <img src="mentor2.jpg" alt="Mentor 2">
-            <h3>Jane Smith</h3>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/janesmith">Jane Smith</a></p>
-            <p><strong>From:</strong> Chennai</p>
-            <p><strong>College:</strong> Anantapur University</p>
-            <p><strong>Feedback:</strong> "SSC is doing great work for students."</p>
-          </div>
-  
-          <!-- Card 3 -->
-          <div class="card">
-            <img src="mentor3.jpg" alt="Mentor 3">
-            <h3>Robert Brown</h3>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/robertbrown">Robert Brown</a></p>
-            <p><strong>From:</strong> Anantapur</p>
-            <p><strong>College:</strong> IIT Hyderabad</p>
-            <p><strong>Feedback:</strong> "A life-changing event at Microsoft!"</p>
-          </div>
-        </div>
-      </section>
-      <section class="mentors">
-        <h2>Our Mentors</h2>
-        <div class="cards">
-          <!-- Card 1 -->
-          <div class="card">
-            <img src="mentor1.jpg" alt="Mentor 1">
-            <h3>John Doe</h3>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/johndoe">John Doe</a></p>
-            <p><strong>From:</strong> Hyderabad</p>
-            <p><strong>College:</strong> IIT Madras</p>
-            <p><strong>Feedback:</strong> "An amazing experience with SSCN!"</p>
-          </div>
-  
-          <!-- Card 2 -->
-          <div class="card">
-            <img src="mentor2.jpg" alt="Mentor 2">
-            <h3>Jane Smith</h3>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/janesmith">Jane Smith</a></p>
-            <p><strong>From:</strong> Chennai</p>
-            <p><strong>College:</strong> Anantapur University</p>
-            <p><strong>Feedback:</strong> "SSC is doing great work for students."</p>
-          </div>
-  
-          <!-- Card 3 -->
-          <div class="card">
-            <img src="mentor3.jpg" alt="Mentor 3">
-            <h3>Robert Brown</h3>
-            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/robertbrown">Robert Brown</a></p>
-            <p><strong>From:</strong> Anantapur</p>
-            <p><strong>College:</strong> IIT Hyderabad</p>
-            <p><strong>Feedback:</strong> "A life-changing event at Microsoft!"</p>
-          </div>
-        </div>
-      </section>
-
-
-
-  <div class="container">
-    <h1>Key Sessions & Learnings</h1>
-    <div class="sessions">
-      <div class="session-card">
-        <div class="session-title">Scaling the Unscalable</div>
-        <div class="session-speaker">Siddharth Vijay (AVP, Engineering | Baazi Games)</div>
-        <div class="session-description">A fascinating session on managing real-time gaming platforms with high concurrency, reliability, and security.</div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-title">Get Sh*t Done in IT</div>
-        <div class="session-speaker">Michael Seidl (Owner | Microsoft MVP)</div>
-        <div class="session-description">Practical insights on improving IT productivity and efficiency.</div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-title">CLI for Microsoft 365</div>
-        <div class="session-speaker">Arjun Menon (Microsoft MVP)</div>
-        <div class="session-description">A deep dive into using CLI as a productivity booster for M365 workloads.</div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-title">AI Integration with DevOps</div>
-        <div class="session-speaker">Praveen Singampalli (Mentor | HeyDevOps)</div>
-        <div class="session-description">Showcased how AI can optimize DevOps, automate tasks, and drive better decision-making.</div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-title">Future of Observability in the Microsoft Ecosystem</div>
-        <div class="session-speaker">Zameer Fouzan (Lead Developer Relations | New Relic)</div>
-        <div class="session-description">Discussed advancements in observability with OpenTelemetry.</div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-title">Cool Demos of Azure Copilot & Security Copilot</div>
-        <div class="session-speaker">Morten Waltorp Knudsen (MVP | 2LinkIT)</div>
-        <div class="session-description">Engaging hands-on demos of how Azure and Security Copilot optimize performance and ensure security.</div>
-      </div>
-
-      <div class="session-card">
-        <div class="session-title">Maximizing PowerShell with GitHub Copilot</div>
-        <div class="session-speaker">Stoyan Chalakov (Sr. Consultant | Microsoft MVP)</div>
-        <div class="session-description">Advanced coding tips using GitHub Copilot for PowerShell.</div>
-      </div>
     </div>
-  </div>
-  </div>
-  <h1>Our Travel Experience</h1>
-  <div class="grid-container">
-    <div class="card">
-      <h3>Starting Point</h3>
-      <p>I, along with Sai Akash, began our trip from Machilipatnam. We were later joined by Gayathri, Sreelakshmi, Yashwanth, Dileep, and Madhan at Gudivada Station.</p>
-    </div>
-    <div class="card">
-      <h3>Train Delay</h3>
-      <p>Our train to Secunderabad was delayed by two hours, so we reached at 7:45 AM and took the metro.</p>
-    </div>
-    <div class="card">
-      <h3>Ticket Mishap</h3>
-      <p>I mistakenly bought metro tickets for only 7 people, leaving Sreelakshmi without a ticket. However, we managed the situation quickly and had a fun time navigating the metro.</p>
-    </div>
-    <div class="card">
-      <h3>Crazy Auto Ride</h3>
-      <p>One crazy moment was squeezing 8 people into a single auto to reach Microsoft Gachibowli. It was chaotic but incredibly fun!</p>
-    </div>
-  </div>
-  <div class="container">
-    <div class="content">
-      <h1>Hurdles at Microsoft</h1>
-      <p>
-        Upon reaching Gate 4 at Microsoft Office, some challenges awaited us:
-      </p>
-      <ul>
-        <li>
-          <strong>Sreelakshmi's Missing Confirmation:</strong> She didn’t have the confirmation ticket, but I managed to get her inside.
-        </li>
-        <li>
-          <strong>Nandyal Team's Delay:</strong> The mentors and students from Nandyal arrived late and weren’t allowed in. After much effort and with Swathi’s mother’s support, 5 members, including 4 SSC mentors, were able to attend.
-        </li>
-      </ul>
-      <p>
-        Special thanks to Swathi’s mother, whose determination made all the difference. I even gifted her one of the medals I received for answering Q&A sessions during the event – a small token of respect for her efforts.
-      </p>
-      <h2>Key Highlights of the Event</h2>
-      <ul>
-        <li>
-          <strong>Networking:</strong> I connected with industry leaders like Morten Knudsen, Praveen Singampalli, and Kamal Shree. The SSC Community was widely recognized, and many participants appreciated our work.
-        </li>
-        <li>
-          <strong>Recognition:</strong> I answered multiple questions during the sessions, earning two medals and a t-shirt.
-        </li>
-        <li>
-          <strong>Memorable Lunch:</strong> We had a delicious lunch and clicked team photos to capture the day’s memories.
-        </li>
-      </ul>
-      <h2>Why Attend Events Like This?</h2>
-      <p>
-        After the event, we held a mentors’ meeting to discuss the key takeaways:
-      </p>
-      <ul>
-        <li>
-          These events shift mindsets, inspire innovation, and open up opportunities for internships, jobs, and networking.
-        </li>
-        <li>
-          They help build communities and connections that can shape our future careers.
-        </li>
-      </ul>
-      <h2>The Journey Back: A Crazy Adventure</h2>
-      <p>
-        After bidding goodbye to Microsoft, we faced another challenge while traveling back. Our plans to book a bus failed, so we took a general train. Despite being tired, the journey was filled with laughter, learning, and small ego fights.
-      </p>
-      <h2>Ending on a High Note</h2>
-      <p>
-        One of the best moments was a surprise birthday gift from SSC mentors. It truly made my day and filled me with gratitude.
-      </p>
-      <p>
-        This experience has strengthened my desire to work at Microsoft someday and made me even more committed to expanding the Student Service Community.
-      </p>
-      <p>
-        Thank you to the Microsoft team, SSC mentors, and everyone who made this day so special.
-      </p>
-    </div>
-  </div>
+    <p class="mb-0 text-center">Developed by <strong class="ab">Maheswaram Subrahmanyam</strong></p>
+    </footer>
+
+    <script src="blog.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+    
+
+    // Disable F12 (Developer Tools)
+    document.addEventListener('keydown', (event) => {
+      if (
+        event.key === 'F12' || // F12 Key
+        (event.ctrlKey && event.shiftKey && event.key === 'I') || // Ctrl + Shift + I
+        (event.ctrlKey && event.shiftKey && event.key === 'C') || // Ctrl + Shift + C
+        (event.ctrlKey && event.shiftKey && event.key === 'J') || // Ctrl + Shift + J
+        (event.ctrlKey && event.key === 'U') // Ctrl + U
+      ) {
+        event.preventDefault();
+        alert("Inspecting the source code is disabled.");
+      }
+    });
+
+    document.addEventListener('contextmenu', (event) => {
+      event.preventDefault();
+      
+    });
+    // Prevent Selection of Text
+    document.addEventListener('selectstart', (event) => {
+      event.preventDefault();
+    });
+</script>
 </body>
-</html>
+</html> 
